@@ -1,0 +1,26 @@
+{
+  "name": "angular-ivh-star-rating",
+  "version": "0.0.0",
+  "authors": [
+    "jtrussell"
+  ],
+  "description": "Canvas based star ratings for angular apps",
+  "main": "dist/ivh-star-rating.js",
+  "keywords": [
+    "angular",
+    "star",
+    "rating"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2"
+  }
+}
