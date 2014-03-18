@@ -1,4 +1,24 @@
 
+/**
+ * Star rating directive
+ *
+ * Draws continuous percentage based star gauges. Usage:
+ *
+ * ```
+ * <ANY
+ *   ivh-star-rating=""
+ *   [ivh-star-rating-count=""]
+ *   [ivh-star-rating-star-points=""]
+ *   [ivh-star-rating-radius=""]
+ *   [ivh-star-rating-gravity=""]
+ *   [ivh-star-rating-color-fill=""]
+ *   [ivh-star-rating-color-unfill=""]
+ *   [ivh-star-rating-color-border=""]>
+ * </ANY>
+ * ```
+ *
+ */
+
 angular.module('ivh.starRating').directive('ivhStarRating', [
     'ivhStarStamper', 'ivhStarColorUtils', 'ivhStarRatingSettings',
     function(ivhStarStamper, ivhStarColorUtils, ivhStarRatingSettings) {
@@ -11,17 +31,26 @@ angular.module('ivh.starRating').directive('ivhStarRating', [
       var ctx = element[0].getContext('2d');
 
       var update = function(ratio) {
-        var canvasWidth = element[0].offsetWidth
-          , canvasHeight = element[0].offsetHeight
-          , defs = ivhStarRatingSettings.get();
-
-        var count = parseInt(attrs.ivhStarRatingCount || defs.count, 10)
+        var defs = ivhStarRatingSettings.get()
           , points = parseInt(attrs.ivhStarRatingStarPoints || defs.starPoints, 10)
-          , radius = attrs.ivhStarRatingRadius || Infinity
           , gravity = attrs.ivhStarRatingGravity || defs.gravity
           , colorFill = attrs.ivhStarRatingColorFill || defs.colorFill
           , colorUnfill = attrs.ivhStarRatingColurUnfill || defs.colorUnfill
-          , colorBorder = attrs.ivhStarRatingColorBorder || ivhStarColorUtils.shade(colorFill, -30);
+          , colorBorder = attrs.ivhStarRatingColorBorder || ivhStarColorUtils.shade(colorFill, -30)
+          , radius = attrs.ivhStarRatingRadius || Infinity
+          , count = parseInt(attrs.ivhStarRatingCount || defs.count, 10);
+
+        // Explicit radius forces a width and height
+        if(Infinity !== radius) {
+          element.attr('height', Math.ceil(radius * 2) + 'px');
+          element.attr('width', (Math.ceil(radius * 2) * count) + 'px');
+        }
+
+        var canvasWidth = element[0].offsetWidth
+          , canvasHeight = element[0].offsetHeight;
+
+        console.log(canvasWidth);
+        console.log(canvasHeight);
 
         radius = Math.min(
           radius,
