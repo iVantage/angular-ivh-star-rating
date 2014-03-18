@@ -1,3 +1,4 @@
+/*jshint bitwise:false */
 
 /**
  * Color utility methods
