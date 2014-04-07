@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style type="text/css" media="all">
+      canvas {
+        box-shadow: rgba(0,0,0,0.5) 0 0 8px;
+      }
+    </style>
+  </head>
+  <body ng-app="ivh.starRating">
+
+  <!--
+    <canvas id="board" width="500px" height="500px"></canvas>
+  -->
+
+    <span
+      ivh-star-rating="0.75"
+      ivh-star-rating-radius="20"
+      width="500px"></span>
+
+    <script src="bower_components/angular/angular.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="src/scripts/module.js" type="text/javascript" charset="utf-8"></script>
+    <script src="src/scripts/services/ivh-star-color-utils.js" type="text/javascript" charset="utf-8"></script>
+    <script src="src/scripts/services/ivh-star-rating-settings.js" type="text/javascript" charset="utf-8"></script>
+    <script src="src/scripts/services/ivh-star-stamper.js" type="text/javascript" charset="utf-8"></script>
+    <script src="src/scripts/directives/ivh-star-rating.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript" charset="utf-8">
+      
+      angular.module('ivh.starRating').config(function(ivhStarRatingSettingsProvider) {
+        ivhStarRatingSettingsProvider.setDefaults({
+          //colorFill: '#00FF00'
+        });
+      });
+
+    </script>
+
+  </body>
+</html>

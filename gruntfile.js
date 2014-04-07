@@ -25,7 +25,7 @@ module.exports = function(grunt) {
       },
       all: {
         files: {
-          'dist/angular-ivh-star-rating.js': [
+          'dist/ivh-star-rating.js': [
             'src/scripts/module.js',
             'src/scripts/**/*.js'
           ]
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      'dist/angular-ivh-star-rating.min.js': 'dist/angular-ivh-star-rating.js'
+      'dist/ivh-star-rating.min.js': 'dist/ivh-star-rating.js'
     },
 
     bump: {
